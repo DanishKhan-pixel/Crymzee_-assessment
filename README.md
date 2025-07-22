@@ -29,9 +29,6 @@ A simple web app where users can:
    ```bash
    python manage.py runserver
    ```
-6. **Open in your browser:**
-   - Register/Login: [http://127.0.0.1:8000/accounts/login/](http://127.0.0.1:8000/accounts/login/)
-   - Dashboard (after login): [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ## Tech Used
 - Python, Django 5
@@ -44,9 +41,6 @@ A simple web app where users can:
 - To access Django admin, create a superuser:
   ```bash
   python manage.py createsuperuser
-  ```
-- Then go to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
-
 ---
 
 **If you get stuck, make sure you have Python 3 and Django installed.**
