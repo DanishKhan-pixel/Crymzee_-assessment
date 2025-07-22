@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .login-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 32px;
+      margin-top: 16px;
+    }
+    .logo {
+      display: block;
+      margin: 0 auto 24px auto;
+      width: 90px;
+      height: 90px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      background: #fff;
+    }
+    .centered {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding-top: 48px;
+    }
+    .form-container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      padding: 40px 32px 32px 32px;
+      max-width: 440px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .input-group {
+      width: 100%;
+      margin-bottom: 18px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .input-group label {
+      margin-bottom: 6px;
+      color: #555;
+      font-weight: 500;
+    }
+    .input-group input[type="text"],
+    .input-group textarea {
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .input-group input[type="file"] {
+      display: none;
+    }
+    .file-input-group {
+      flex-direction: row;
+      align-items: center;
+    }
+    .custom-file-label {
+      display: inline-block;
+      background: #f1f5f9;
+      color: #009EF7;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      border: 1px solid #009EF7;
+      margin-right: 10px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .custom-file-label:hover {
+      background: #009EF7;
+      color: #fff;
+    }
+    .input-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    .input-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+      font-size: 1.1em;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .input-wrapper input {
+      width: 100%;
+      padding-left: 38px; /* Make space for the icon */
+      box-sizing: border-box;
+    }
+    .btn {
+      width: 100%;
+      display: block;
+      text-align: center;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .btn.outline,
+    .btn.outline:visited,
+    .btn.outline:active,
+    .btn.outline:focus {
+       background-color: white;
+       color: #00aaff !important;
+       border: 2px solid #00aaff;
+       transition: background 0.2s;
+       text-decoration: none !important;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       text-align: center;
+       padding: 12px;
+       font-size: 16px;
+       border-radius: 8px;
+       font-weight: 600;
+       margin-bottom: 0;
+       cursor: pointer;
+       line-height: 1.5;
+       outline: none;
+       height: 48px;
+       box-sizing: border-box;
+    }
+    .btn.outline:hover,
+    .btn.outline:focus {
+       background-color: #e0f7fa;
+       color: #0090d1 !important;
+       text-decoration: none !important;
+    }
+    @media (max-width: 700px) {
+      .form-container { max-width: 98vw; padding: 24px 6px; }
+    }
+  </style>
+</head>
+<body style="background:#f8fafc;">
+  <div class="centered" style="margin-bottom:0;">
+    <img src="{% static 'logo.png' %}" class="logo" alt="Logo">
+    <div class="login-title">Welcome Back</div>
+    <div class="form-container">
+      <form method="post" autocomplete="off" style="width:100%;">
+        {% csrf_token %}
+        <div class="input-group">
+          <div class="input-wrapper">
+            <span class="input-icon"><i class="fa fa-envelope"></i></span>
+            <input type="email" name="email" id="id_email" placeholder=" " required value="{{ form.email.value|default:'' }}">
+            <label for="id_email">Email</label>
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="input-wrapper">
+            <span class="input-icon"><i class="fa fa-lock"></i></span>
+            <input type="password" name="password" id="id_password" placeholder=" " required>
+            <label for="id_password">Password</label>
+          </div>
+        </div>
+        {% if messages %}
+          <div class="form-error">{% for message in messages %}{{ message }}<br>{% endfor %}</div>
+        {% endif %}
+        <button type="submit" class="btn">Sign In</button>
+      </form>
+      <div style="text-align:center; margin: 8px 0; color:#888;">OR</div>
+      <a href="{% url 'register' %}" class="btn outline">Sign Up</a>
+    </div>
+  </div>
+</body>
+</html> 

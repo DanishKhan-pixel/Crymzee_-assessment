@@ -1,0 +1,246 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Account</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .register-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 32px;
+      margin-top: 16px;
+    }
+
+    .register-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .register-form-row {
+      display: flex;
+      gap: 24px;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+
+    .register-form-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .input-group {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-group input {
+      padding: 12px 12px 12px 40px;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      background: #fff;
+      transition: border 0.2s;
+    }
+
+    .input-group input:focus {
+      border-color: #00aaff;
+    }
+
+    .input-group label {
+      position: absolute;
+      top: 12px;
+      left: 40px;
+      font-size: 14px;
+      color: #888;
+      background: #fff;
+      padding: 0 4px;
+      pointer-events: none;
+      transition: 0.2s ease all;
+    }
+
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label {
+      top: -10px;
+      left: 32px;
+      font-size: 12px;
+      color: #00aaff;
+      background: #fff;
+    }
+
+    .input-group .input-icon {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      color: #888;
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    .register-btns .btn, .register-btns .btn.outline {
+      width: 100%;
+      margin-bottom: 0;
+      display: block;
+      text-align: center;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .register-btns .btn {
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .register-btns .btn.outline {
+      background-color: white;
+      color: #00aaff;
+      border: 2px solid #00aaff;
+      transition: background 0.2s;
+    }
+    .register-btns .btn.outline:hover {
+      background-color: #e0f7fa;
+    }
+    .register-btns {
+      width: 100%;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 24px auto;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      background: #fff;
+    }
+
+    .centered {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding-top: 48px;
+    }
+
+    .form-error {
+      color: #f44336;
+      text-align: center;
+      margin-bottom: 12px;
+      font-size: 1.05em;
+    }
+
+    .register-btns .btn.outline,
+    .register-btns .btn.outline:visited,
+    .register-btns .btn.outline:active,
+    .register-btns .btn.outline:focus {
+      background-color: white;
+      color: #00aaff !important;
+      border: 2px solid #00aaff;
+      transition: background 0.2s;
+      text-decoration: none !important;   /* Remove underline */
+      display: flex;                      /* Use flex for vertical centering */
+      align-items: center;                /* Center text vertically */
+      justify-content: center;            /* Center text horizontally */
+      text-align: center;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      margin-bottom: 0;
+      cursor: pointer;
+      line-height: 1.5;
+      outline: none;
+      height: 48px;                       /* Match the height of the Sign Up button */
+      box-sizing: border-box;
+    }
+
+    .register-btns .btn.outline:hover,
+    .register-btns .btn.outline:focus {
+      background-color: #e0f7fa;
+      color: #0090d1 !important;
+      text-decoration: none !important;
+    }
+
+    @media (max-width: 700px) {
+      .register-card {
+        max-width: 98vw;
+        padding: 24px 6px;
+      }
+      .register-form-row {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body style="background:#f8fafc;">
+  <div class="centered" style="margin-bottom:0;">
+    <img src="{% static 'logo.png' %}" class="logo" alt="Logo">
+    <div class="register-title">Create Account</div>
+    <div class="register-card">
+      <form method="post" autocomplete="off" style="width:100%;">
+        {% csrf_token %}
+        <div class="register-form-row">
+          <div class="register-form-col">
+            <div class="input-group">
+              <span class="input-icon"><i class="fa fa-envelope"></i></span>
+              <input type="email" name="email" id="id_email" placeholder=" " required value="{{ form.email.value|default:'' }}">
+              <label for="id_email">Email</label>
+            </div>
+            <div class="input-group">
+              <span class="input-icon"><i class="fa fa-lock"></i></span>
+              <input type="password" name="password" id="id_password" placeholder=" " required>
+              <label for="id_password">Password</label>
+            </div>
+          </div>
+          <div class="register-form-col">
+            <div class="input-group">
+              <span class="input-icon"><i class="fa fa-calendar"></i></span>
+              <input type="date" name="date_of_birth" id="id_date_of_birth" placeholder=" " required value="{{ form.date_of_birth.value|default:'' }}">
+              <label for="id_date_of_birth">Date of Birth</label>
+            </div>
+            <div class="input-group">
+              <span class="input-icon"><i class="fa fa-lock"></i></span>
+              <input type="password" name="confirm_password" id="id_confirm_password" placeholder=" " required>
+              <label for="id_confirm_password">Confirm Password</label>
+            </div>
+          </div>
+        </div>
+        {% if messages %}
+          <div class="form-error">{% for message in messages %}{{ message }}<br>{% endfor %}</div>
+        {% endif %}
+        <div class="register-btns">
+          <button type="submit" class="btn">Sign Up</button>
+          <div style="text-align:center; margin: 16px 0 8px 0; color:#888;">OR</div>
+          <a href="{% url 'login' %}" class="btn outline">Sign In</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

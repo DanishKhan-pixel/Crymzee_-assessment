@@ -1,0 +1,273 @@
+body {
+  background: #f8fafc;
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.logo {
+  display: block;
+  margin: 40px auto 20px auto;
+  width: 80px;
+  height: 80px;
+}
+
+h2, h3 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.form-container, .modal-content {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  padding: 32px 32px 24px 32px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="date"], textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 16px;
+  background: #f8fafc;
+}
+
+input[type="file"] {
+  margin-bottom: 16px;
+}
+
+.btn, button {
+  background: #00aaff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn.secondary, .btn.cancel {
+  background: #f44336;
+}
+
+.btn.outline {
+  background: #fff;
+  color: #00aaff;
+  border: 2px solid #00aaff;
+}
+
+.btn:hover, button:hover {
+  background: #0077aa;
+}
+
+.btn.outline:hover {
+  background: #e0f7fa;
+}
+
+.files-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px 0 40px;
+}
+
+.logo-small {
+  width: 48px;
+  height: 48px;
+}
+
+.user-info {
+  text-align: right;
+}
+
+.files-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  padding: 32px;
+}
+
+.files-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.files-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.files-table th, .files-table td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.files-table th {
+  background: #f1f5f9;
+  font-weight: 700;
+}
+
+.files-table td a {
+  color: #00aaff;
+  text-decoration: underline;
+}
+
+.files-table .btn {
+  width: auto;
+  padding: 6px 16px;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background: rgba(0,0,0,0.2);
+}
+
+.modal-content {
+  margin: 10% auto;
+  max-width: 400px;
+  padding: 32px 24px 24px 24px;
+  position: relative;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 24px;
+}
+.input-group input,
+.input-group textarea {
+  padding-left: 40px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 100%;
+  transition: border 0.2s;
+}
+.input-group input:focus,
+.input-group textarea:focus {
+  border: 1.5px solid #00aaff;
+  outline: none;
+}
+.input-group label {
+  position: absolute;
+  left: 40px;
+  top: 10px;
+  color: #888;
+  font-size: 15px;
+  pointer-events: none;
+  transition: 0.2s;
+  background: #fff;
+  padding: 0 4px;
+}
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group textarea:focus + label,
+.input-group textarea:not(:placeholder-shown) + label {
+  top: -12px;
+  left: 32px;
+  font-size: 13px;
+  color: #00aaff;
+  background: #fff;
+}
+.input-group .input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #00aaff;
+  font-size: 18px;
+  pointer-events: none;
+}
+.form-error {
+  color: #f44336;
+  font-size: 14px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+.form-success {
+  color: #00aaff;
+  font-size: 14px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+/* Modal close button */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.modal-close:hover {
+  color: #f44336;
+}
+/* Drag and drop area for file upload */
+.drag-drop-area {
+  border: 2px dashed #00aaff;
+  border-radius: 8px;
+  background: #f0faff;
+  padding: 24px;
+  text-align: center;
+  color: #888;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: border 0.2s;
+}
+.drag-drop-area.dragover {
+  border: 2px solid #00aaff;
+  background: #e0f7fa;
+}
+
+@media (max-width: 600px) {
+  .files-header, .files-container {
+    padding: 12px;
+  }
+  .files-container {
+    max-width: 100%;
+    padding: 12px;
+  }
+  .modal-content {
+    max-width: 95vw;
+  }
+} 
